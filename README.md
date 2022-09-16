@@ -17,8 +17,11 @@
 
 ### Pronouns
 
-I go by he/him (nothing else)
+I go by he (nothing else)
 
 ### Stats
 
-![Metrics](https://metrics.lecoq.io/OyewoleOyedeji?template=classic&languages=1&achievements=1&activity=1&base=header%2C%20activity%2C%20community%2C%20repositories%2C%20metadata&base.indepth=false&base.hireable=false&base.skip=false&languages=false&languages.limit=8&languages.threshold=0%25&languages.other=false&languages.colors=github&languages.sections=most-used&languages.indepth=false&languages.analysis.timeout=15&languages.categories=markup%2C%20programming&languages.recent.categories=markup%2C%20programming&languages.recent.load=300&languages.recent.days=14&achievements=false&achievements.threshold=C&achievements.secrets=true&achievements.display=detailed&achievements.limit=0&activity=false&activity.limit=5&activity.load=300&activity.days=14&activity.visibility=all&activity.timestamps=false&activity.filter=all&config.timezone=Africa%2FLagos)
+[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=OyewoleOyedeji&show_icons=true&theme=vue)](https://github.com/OyewoleOyedeji/github-readme-stats)
+
+### Languages I love
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=OyewoleOyedeji)](https://github.com/anuraghazra/github-readme-stats&theme=vue)
