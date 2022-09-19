@@ -23,5 +23,7 @@ I go by he (nothing else)
 
 [![My GitHub stats](https://github-readme-stats.vercel.app/api?username=OyewoleOyedeji&show_icons=true&theme=vue)](https://github.com/OyewoleOyedeji/github-readme-stats)
 
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=OyewoleOyedeji&theme=vue&border_radius=10)](https://git.io/streak-stats)
+
 ### Languages I love
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=OyewoleOyedeji)](https://github.com/anuraghazra/github-readme-stats&theme=vue)
