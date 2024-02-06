@@ -6,9 +6,9 @@
 I'm Deji, also known as Maxwell. I'm passionate about creating usable software and photography.
 
 ### My Activity
-[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=OyewoleOyedeji&show_icons=true&theme=graywhite)](https://github.com/OyewoleOyedeji/github-readme-stats)
+[![My GitHub stats](https://github-readme-stats.vercel.app/api?username=oyedejioyewole&show_icons=true&theme=graywhite)](https://github.com/oyedejioyewole/github-readme-stats)
 
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=OyewoleOyedeji&theme=graywhite&border_radius=10)](https://git.io/streak-stats)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=oyedejioyewole&theme=graywhite&border_radius=10)](https://git.io/streak-stats)
 
 ### Goals
 Building an empire called `TheMastermind's Tech` is my ultimate goal.
