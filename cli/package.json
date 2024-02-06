@@ -1,0 +1,31 @@
+{
+  "bin": {
+    "portfolio": "build/index.js"
+  },
+  "name": "cli",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A simple tool to manage content for your portfolio",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc -w"
+  },
+  "keywords": [],
+  "author": "oyedejioyewole",
+  "license": "ISC",
+  "dependencies": {
+    "@inquirer/confirm": "^3.0.0",
+    "@inquirer/input": "^2.0.0",
+    "@inquirer/select": "^2.0.0",
+    "consola": "^3.2.3",
+    "fs-extra": "^11.2.0",
+    "nanoid": "^5.0.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "optionalDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  }
+}
