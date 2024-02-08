@@ -18,18 +18,12 @@ onMounted(async () => {
       rarely finish any project 😅).
     </p>
 
-    <p class="text-lg">
-      <strong class="text-xl font-serif">PS</strong>: Clicking on any card
-      causes it to open a link for the project (if it has) in a new tab.
-    </p>
-
     <div class="space-y-5">
       <template v-if="projects.length > 0">
         <Project
           v-for="project of projects"
-          :as="project.repository ? 'a' : 'div'"
           :is-draft="project.isDraft"
-          :href="project.repository ? project.repository : null"
+          :href="project.url"
           :key="project._id"
         >
           <template #description>{{ project.description }}</template>
