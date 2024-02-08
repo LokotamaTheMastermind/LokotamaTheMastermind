@@ -47,10 +47,10 @@ async function __main() {
 
   if (projectHasWebsite)
     project.url = await input({
-      message: prompts.projects.repository.url,
+      message: prompts.projects.website.url,
     });
   else if (projectHasRepository)
-    project.url = await input({ message: prompts.projects.website.url });
+    project.url = await input({ message: prompts.projects.repository.url });
 
   let database = await readFromDatabase();
   database.push(project);
