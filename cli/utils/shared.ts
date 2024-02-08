@@ -11,11 +11,11 @@ export const prompts = {
     name: "What is the name of the project?",
     repository: {
       confirm: "Does this project have a repository?",
-      url: "What is the URL?",
+      url: "What is the repository link?",
     },
     website: {
       confirm: "Does this project have a website?",
-      url: "What is the URL?",
+      url: "What is the website link?",
     },
   },
 };
