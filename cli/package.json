@@ -3,12 +3,14 @@
     "db": "build/index.js"
   },
   "name": "cli",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
-  "description": "A simple tool to manage database of projects",
+  "description": "A simple tool to manage the database of my projects",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc -w"
+    "build": "tsc -w",
+    "cli": "tsc && node ./build/index.js"
   },
   "keywords": [],
   "author": "oyedejioyewole",
