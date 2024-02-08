@@ -20,9 +20,8 @@ onMounted(async () => {
         <template v-if="projects.length > 0">
           <Project
             v-for="project of projects"
-            :as="project.repository ? 'a' : 'div'"
             :is-draft="project.isDraft"
-            :href="project.repository ? project.repository : null"
+            :href="project.url"
             :key="project._id"
           >
             <template #description>{{ project.description }}</template>
