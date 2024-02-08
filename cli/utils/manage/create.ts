@@ -2,7 +2,7 @@ import confirm from "@inquirer/confirm";
 import input from "@inquirer/input";
 import { consola } from "consola";
 import { nanoid } from "nanoid";
-import { readPortfolio, writePortfolio } from "../filesystem.js";
+import { readFromDatabase, writeToDatabase } from "../filesystem.js";
 import type { Project } from "../health.js";
 import { prompts } from "../shared.js";
 
@@ -20,16 +20,15 @@ export default async () => {
 
     for (let index = 0; index < repetitions; index++) {
       console.log();
-      await main();
+      await __main();
     }
   } else {
     consola.info("Creating project ...");
-
-    await main();
+    await __main();
   }
 };
 
-async function main() {
+async function __main() {
   const project: Project = {
     _id: nanoid(16),
     name: await input({ message: prompts.projects.name }),
@@ -42,18 +41,22 @@ async function main() {
   const projectHasRepository = await confirm({
     message: prompts.projects.repository.confirm,
   });
+  const projectHasWebsite = await confirm({
+    message: prompts.projects.website.confirm,
+  });
+
   if (projectHasRepository)
-    project.repository = await input({
+    project.url = await input({
       message: prompts.projects.repository.url,
     });
+  else if (projectHasWebsite)
+    project.url = await input({ message: prompts.projects.website.url });
 
-  const portfolio = await readPortfolio();
-  portfolio.projects.push(project);
+  let database = await readFromDatabase();
+  database.push(project);
 
-  portfolio.projects = portfolio.projects.sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
-  await writePortfolio(portfolio);
+  database = database.sort((a, b) => a.name.localeCompare(b.name));
+  await writeToDatabase(database);
 
   console.log();
   consola.success(

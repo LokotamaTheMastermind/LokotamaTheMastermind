@@ -2,7 +2,7 @@ import confirm from "@inquirer/confirm";
 import input from "@inquirer/input";
 import select from "@inquirer/select";
 import { consola } from "consola";
-import { readPortfolio, writePortfolio } from "../filesystem.js";
+import { readFromDatabase, writeToDatabase } from "../filesystem.js";
 import { Project } from "../health.js";
 import { prompts } from "../shared.js";
 
@@ -10,16 +10,11 @@ export default async () => {
   console.log();
 
   consola.info("Loading projects ...");
-
-  /**
-   * Render out each project in a list, then parse the JSON string
-   * assign the parse JSON as a value and sort the array
-   */
-  const portfolio = await readPortfolio();
+  const projects = await readFromDatabase();
   const selectedProjects = await consola
     .prompt("Which project do you want to update?", {
       type: "multiselect",
-      options: portfolio.projects.map((project) => ({
+      options: projects.map((project) => ({
         label: project.name,
         value: JSON.stringify(project),
       })),
@@ -28,13 +23,14 @@ export default async () => {
       projects
         // @ts-expect-error
         .map((project) => JSON.parse(project) as Project)
-        .sort((a, b) => a.name.localeCompare(b.name))
     );
+
+  console.log(selectedProjects);
 
   // Loop through the selected projects with edit options
   for (const project of selectedProjects) {
     console.log();
-    consola.info(`Editing ${project.name} (${project._id})\n`);
+    consola.info(`Editing ${project.name} (${project._id}) ...\n`);
 
     // Update choices
     const choice = (await select({
@@ -71,14 +67,14 @@ export default async () => {
         });
 
         if (projectHasRepository) {
-          consola.info(`Current: ${project.repository}`);
-          project.repository = await input({
+          consola.info(`Current: ${project.url}`);
+          project.url = await input({
             message: prompts.projects.repository.url,
           });
         } else {
           consola.warn("Removing previously attached repository URL!");
 
-          if (project.repository) delete project["repository"];
+          if (project.url) delete project["repository"];
         }
         break;
 
@@ -87,15 +83,15 @@ export default async () => {
     }
 
     // Get index of current project
-    const index = portfolio.projects.findIndex(
+    const projectIndex = projects.findIndex(
       (_project) => _project._id === project._id
     );
 
     // Override previously saved project information
-    portfolio.projects[index] = project;
+    projects[projectIndex] = project;
 
     // Write changes
-    await writePortfolio(portfolio);
+    await writeToDatabase(projects);
 
     console.log();
     consola.success(`Updated project ${project.name} (${project._id})!`);

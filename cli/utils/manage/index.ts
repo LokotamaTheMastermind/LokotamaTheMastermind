@@ -4,8 +4,6 @@ import deleteProject from "./delete.js";
 import listProject from "./list.js";
 import updateProject from "./update.js";
 
-type Manage = "create" | "delete" | "list" | "update";
-
 export default async () => {
   const choice = (await select({
     message: "What action do you want to perform?",
@@ -24,7 +22,7 @@ export default async () => {
         value: "update",
       },
     ],
-  })) as Manage;
+  })) as "create" | "delete" | "list" | "update";
 
   switch (choice) {
     case "create":

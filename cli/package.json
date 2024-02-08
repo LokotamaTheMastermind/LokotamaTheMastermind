@@ -1,12 +1,11 @@
 {
   "bin": {
-    "portfolio": "build/index.js"
+    "db": "build/index.js"
   },
   "name": "cli",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
-  "description": "A simple tool to manage content for your portfolio",
+  "description": "A simple tool to manage database of projects",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc -w"

@@ -1,54 +1,46 @@
 import { ensureFile } from "fs-extra";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
-import type { Config, Portfolio } from "./health.js";
+import type { Config, Project } from "./health.js";
+import { configPath } from "./shared.js";
 
-/**
- * Read the configurations in `.portfolio-cli.json`
- *
- *  @returns Config
- */
+declare global {
+  interface JSON {
+    parse<T>(payload: string): T;
+  }
+}
+
 export async function readConfig() {
-  const buffer = await readFile(resolve(".portfolio-cli.json"));
-  return JSON.parse(buffer.toString()) as Config;
-}
-
-/**
- * Get portfolio data
- *
- * @returns Portfolio
- */
-export async function readPortfolio() {
-  const config = await readConfig();
-
-  const buffer = await readFile(
-    resolve(config.portfolio.path, config.portfolio.name)
+  const configAsString = await readFile(configPath).then((buffer) =>
+    buffer.toString()
   );
-  return JSON.parse(buffer.toString()) as Portfolio;
+
+  return JSON.parse<Config>(configAsString);
 }
 
-/**
- * Write changes to the configurations
- * in `.portfolio-cli.json`
- *
- * @param payload What to override current state with?
- */
+export async function readFromDatabase() {
+  const configAsString = await readFile(configPath).then((buffer) =>
+    buffer.toString()
+  );
+  const config = JSON.parse<Config>(configAsString);
+
+  const path = resolve(config.path, config.name);
+  const projects = await readFile(path).then((buffer) => buffer.toString());
+
+  return JSON.parse<Project[]>(projects);
+}
+
 export async function writeConfig(payload: Config) {
-  await writeFile(resolve(".portfolio-cli.json"), JSON.stringify(payload));
+  await writeFile(configPath, JSON.stringify(payload));
 }
 
-/**
- * Write portfolio data
- *
- * @param payload What to override current state with?
- */
-export async function writePortfolio(payload: Portfolio) {
-  const config = await readConfig();
-  const path = resolve(config.portfolio.path, config.portfolio.name);
+export async function writeToDatabase(payload: Project[]) {
+  const configAsString = await readFile(configPath).then((buffer) =>
+    buffer.toString()
+  );
+  const config = JSON.parse<Config>(configAsString);
+  const path = resolve(config.path, config.name);
 
-  // Ensure portfolio already exists
   await ensureFile(path);
-
-  // Update portfolio
   await writeFile(path, JSON.stringify(payload));
 }

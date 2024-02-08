@@ -1,16 +1,17 @@
 import { consola } from "consola";
-import { readPortfolio } from "../filesystem.js";
+import { readFromDatabase } from "../filesystem.js";
 
 export default async () => {
-  const portfolio = await readPortfolio();
+  const projects = await readFromDatabase();
 
   console.log();
   consola.info("Loading projects ...");
   console.table(
-    portfolio.projects.map((project) => ({
+    projects.map((project) => ({
       _id: project._id,
-      name: project.name,
       isDraft: project.isDraft,
+      name: project.name,
+      url: project.url ?? "N/A",
     }))
   );
 };
