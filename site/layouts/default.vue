@@ -88,45 +88,49 @@ const areTooltipsDisabled = computed(() =>
         <div class="space-y-5 text-center">
           <h1 class="font-serif text-4xl">Actions</h1>
 
-          <div class="flex justify-center lg:flex-col items-center gap-4">
+          <ul class="flex justify-center lg:flex-col items-center gap-4">
             <!-- Toggle theme -->
-            <ClientOnly>
+            <li>
+              <ClientOnly>
+                <Button
+                  type="button"
+                  v-tooltip.left="{
+                    content: 'Change site theme',
+                    disabled: areTooltipsDisabled,
+                  }"
+                  :for-icon="true"
+                  @click="
+                    $colorMode.preference =
+                      $colorMode.value === 'dark' ? 'light' : 'dark'
+                  "
+                >
+                  <span class="sr-only"
+                    >Toggle
+                    {{ $colorMode.value === "dark" ? "light" : "dark" }}
+                    mode</span
+                  >
+                  <component size="30" :is="themeIcon" />
+                </Button>
+              </ClientOnly>
+            </li>
+
+            <!-- Toggle cursor effects -->
+            <li>
               <Button
+                class="hidden lg:block"
                 type="button"
                 v-tooltip.left="{
-                  content: 'Change site theme',
+                  content: 'Disable cursor effect',
                   disabled: areTooltipsDisabled,
                 }"
                 :for-icon="true"
-                @click="
-                  $colorMode.preference =
-                    $colorMode.value === 'dark' ? 'light' : 'dark'
-                "
+                @click="enableCursorFx = !enableCursorFx"
               >
-                <span class="sr-only"
-                  >Toggle
-                  {{ $colorMode.value === "dark" ? "light" : "dark" }}
-                  mode</span
-                >
-                <component size="30" :is="themeIcon" />
+                <span class="sr-only">Disable cursor effect</span>
+                <PhosphorIconSparkle size="30" />
               </Button>
-            </ClientOnly>
-
-            <!-- Toggle cursor effects -->
-            <Button
-              class="hidden lg:block"
-              type="button"
-              v-tooltip.left="{
-                content: 'Disable cursor effect',
-                disabled: areTooltipsDisabled,
-              }"
-              :for-icon="true"
-              @click="enableCursorFx = !enableCursorFx"
-            >
-              <span class="sr-only">Disable cursor effect</span>
-              <PhosphorIconSparkle size="30" />
-            </Button>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <hr class="border-black/50 dark:border-white/50 border w-[90%]" />
@@ -134,49 +138,58 @@ const areTooltipsDisabled = computed(() =>
         <div class="space-y-5 text-center">
           <h1 class="font-serif text-4xl">Socials</h1>
 
-          <div class="flex lg:flex-col items-center gap-4">
+          <ul class="flex lg:flex-col items-center gap-4">
             <!-- GitHub profile -->
-            <Button
-              target="_blank"
-              to="https://github.com/oyedejioyewole"
-              v-tooltip.left="{
-                content: 'My GitHub',
-                disabled: areTooltipsDisabled,
-              }"
-              :for-icon="true"
-            >
-              <span class="sr-only">My GitHub</span>
-              <PhosphorIconGithubLogo size="30" />
-            </Button>
+            <li class="contents">
+              <Button
+                aria-label="My GitHub profile (open in a new window)"
+                target="_blank"
+                to="https://github.com/oyedejioyewole"
+                v-tooltip.left="{
+                  content: 'My GitHub',
+                  disabled: areTooltipsDisabled,
+                }"
+                :for-icon="true"
+              >
+                <span class="sr-only">My GitHub</span>
+                <PhosphorIconGithubLogo size="30" />
+              </Button>
+            </li>
 
             <!-- Instagram -->
-            <Button
-              target="_blank"
-              to="https://instagram.com/oyedeji.oyewole"
-              v-tooltip.left="{
-                content: 'My Instagram',
-                disabled: areTooltipsDisabled,
-              }"
-              :for-icon="true"
-            >
-              <span class="sr-only">My Instagram</span>
-              <PhosphorIconInstagramLogo size="30" />
-            </Button>
+            <li class="contents">
+              <Button
+                aria-label="My Instagram account (open in a new window)"
+                target="_blank"
+                to="https://instagram.com/oyedeji.oyewole"
+                v-tooltip.left="{
+                  content: 'My Instagram',
+                  disabled: areTooltipsDisabled,
+                }"
+                :for-icon="true"
+              >
+                <span class="sr-only">My Instagram</span>
+                <PhosphorIconInstagramLogo size="30" />
+              </Button>
+            </li>
 
             <!-- Send me a message -->
-            <Button
-              target="_blank"
-              to="mailto://oyedejioyewolemaxwell@proton.me"
-              v-tooltip.left="{
-                content: 'Send me a message',
-                disabled: areTooltipsDisabled,
-              }"
-              :for-icon="true"
-            >
-              <span class="sr-only">Send me a message</span>
-              <PhosphorIconEnvelopeSimple size="30" />
-            </Button>
-          </div>
+            <li class="contents">
+              <Button
+                aria-label="Send me a message (open in your default email client)"
+                target="_blank"
+                to="mailto://oyedejioyewolemaxwell@proton.me"
+                v-tooltip.left="{
+                  content: 'Send me a message',
+                  disabled: areTooltipsDisabled,
+                }"
+                :for-icon="true"
+              >
+                <span class="sr-only">Send me a message</span>
+                <PhosphorIconEnvelopeSimple size="30" />
+              </Button>
+            </li>
+          </ul>
         </div>
       </nav>
     </main>

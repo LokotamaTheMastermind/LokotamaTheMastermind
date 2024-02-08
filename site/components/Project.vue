@@ -15,6 +15,7 @@ defineProps<{ isDraft: boolean; href?: string }>();
 
       <!-- Project status -->
       <component
+        aria-label="Live website (open in a new window)"
         class="order-first lg:order-last inline-flex bg-black/30 dark:bg-white/30 px-3 py-1 text-lg font-sans rounded-full items-center gap-x-2 w-fit"
         target="_blank"
         :href="href"
