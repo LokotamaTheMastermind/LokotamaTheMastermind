@@ -4,12 +4,12 @@ defineProps<{ as: string; isDraft: boolean }>();
 
 <template>
   <component
-    class="bg-black/20 border border-black dark:border-white dark:bg-white/20 p-10 rounded-2xl space-y-4 block backdrop-blur-2xl"
+    class="bg-black/20 border border-black dark:border-white dark:bg-white/20 p-5 rounded-2xl space-y-4 block backdrop-blur-2xl"
     target="_blank"
     :is="as"
   >
     <h3
-      class="font-serif text-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-10"
+      class="font-serif text-xl flex flex-col lg:flex-row lg:items-center justify-between gap-10"
     >
       <!-- Project name -->
       <slot name="name" />
@@ -24,6 +24,6 @@ defineProps<{ as: string; isDraft: boolean }>();
     </h3>
 
     <!-- Project description -->
-    <p class="text-xl"><slot name="description" /></p>
+    <p class="text-lg"><slot name="description" /></p>
   </component>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { projects } from "~/assets/_portfolio.json";
+import projects from "~/assets/_database.json";
 
 onMounted(async () => {
   const locomotive = await import("locomotive-scroll");
@@ -14,27 +14,28 @@ onMounted(async () => {
     <h1 class="text-6xl font-serif">Projects</h1>
 
     <p class="text-lg">
-      Here are some of the sidequests, I'm working on (or have finished &mdash;
-      I rarely finish any project 😅)
+      Here are some of the sidequests I'm working on (or have finished &mdash; I
+      rarely finish any project 😅).
     </p>
 
     <p class="text-lg">
       <strong class="text-xl font-serif">PS</strong>: Clicking on any card
-      causes it to open a link for the project (if it has) in a new tab
+      causes it to open a link for the project (if it has) in a new tab.
     </p>
 
     <div class="space-y-5">
-      <Project
-        v-for="project of projects"
-        v-if="projects.length > 0"
-        :as="project.repository ? 'a' : 'div'"
-        :is-draft="project.isDraft"
-        :href="project.repository ? project.repository : null"
-        :key="project._id"
-      >
-        <template #description>{{ project.description }}</template>
-        <template #name>{{ project.name }}</template>
-      </Project>
+      <template v-if="projects.length > 0">
+        <Project
+          v-for="project of projects"
+          :as="project.repository ? 'a' : 'div'"
+          :is-draft="project.isDraft"
+          :href="project.repository ? project.repository : null"
+          :key="project._id"
+        >
+          <template #description>{{ project.description }}</template>
+          <template #name>{{ project.name }}</template>
+        </Project>
+      </template>
 
       <div
         class="flex flex-col items-center gap-y-4 border border-black dark:border-white p-10 rounded-2xl"

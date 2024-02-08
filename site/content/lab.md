@@ -4,12 +4,12 @@ title: Lab · Oyedeji Oyewole
 
 # Lab
 
-**PS**: This is where I test/spam some UI ideas
+**PS**: This is where I test/spam some UI ideas.
 
-::LabCard{description="A blob which follows the cursor based on its position" no-preview="true" title="Cursor Effect"}
+::LabCard{description="A blob which follows the cursor based on its position." no-preview title="Cursor Effect"}
 
 #extra
-**PS**: if it wasn't obvious, the circle that keeps following your mouse is the cursor effect.
+**PS**: The circle that follows your mouse is the cursor effect.
 
 #code
 
