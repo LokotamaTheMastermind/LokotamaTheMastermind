@@ -3,9 +3,9 @@ import { gsap } from "gsap";
 
 const { x, y } = useMouse({ touch: false });
 
-watch([x, y], (_new) => {
-  gsap.to("#cursor-fx", { x: _new[0] - 70, y: _new[1] - 70 });
-});
+watch([x, y], (_new) =>
+  gsap.to("#cursor-fx", { x: _new[0] - 70, y: _new[1] - 70 }),
+);
 </script>
 
 <template>
