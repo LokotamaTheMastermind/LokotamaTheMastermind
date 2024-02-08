@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import projects from "~/assets/_database.json";
 
+defineOgImageComponent("Page");
+
 onMounted(async () => {
   const locomotive = await import("locomotive-scroll");
   new locomotive.default();

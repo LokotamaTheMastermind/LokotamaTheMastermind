@@ -7,14 +7,23 @@ const themeIcon = computed(() => {
   else return resolveComponent("PhosphorIconSun");
 });
 
+const { width: browserWidth } = useWindowSize();
+
 const enableCursorFx = ref(true);
+const showCursorFx = computed(() =>
+  browserWidth.value > 1024 && enableCursorFx.value ? true : false,
+);
+
+const areTooltipsDisabled = computed(() =>
+  browserWidth.value < 1024 ? true : false,
+);
 </script>
 
 <template>
   <NuxtLoadingIndicator color="#000000" />
 
   <div class="overflow-hidden relative">
-    <CursorFx v-show="enableCursorFx" />
+    <CursorFx v-show="showCursorFx" />
 
     <main class="min-h-screen grid grid-cols-5 gap-x-10">
       <!-- Links -->
@@ -25,34 +34,48 @@ const enableCursorFx = ref(true);
 
         <hr class="border-black dark:border-white border w-1/2" />
 
-        <div class="flex flex-col items-center gap-5">
-          <Button
-            to="/"
-            :class="{ 'bg-black/20 dark:bg-white/20': $route.name === 'index' }"
-          >
-            <PhosphorIconHouseSimple class="scale-75 lg:scale-100" size="30" />
-            Home
-          </Button>
+        <ul class="flex flex-col items-center gap-5">
+          <!-- Home -->
+          <li>
+            <Button
+              to="/"
+              :class="{
+                'bg-black/20 dark:bg-white/20': $route.name === 'index',
+              }"
+            >
+              <PhosphorIconHouseSimple
+                class="scale-75 lg:scale-100"
+                size="30"
+              />
+              Home
+            </Button>
+          </li>
 
-          <Button
-            to="/lab"
-            :class="{
-              'bg-black/20 dark:bg-white/20': $route.name === 'lab',
-            }"
-          >
-            <PhosphorIconFlask class="scale-75 lg:scale-100" size="30" /> Lab
-          </Button>
+          <!-- Lab -->
+          <li>
+            <Button
+              to="/lab"
+              :class="{
+                'bg-black/20 dark:bg-white/20': $route.name === 'lab',
+              }"
+            >
+              <PhosphorIconFlask class="scale-75 lg:scale-100" size="30" /> Lab
+            </Button>
+          </li>
 
-          <Button
-            to="/projects"
-            :class="{
-              'bg-black/20 dark:bg-white/20': $route.name === 'projects',
-            }"
-          >
-            <PhosphorIconCode class="scale-75 lg:scale-100" size="30" />
-            Projects
-          </Button>
-        </div>
+          <!-- Projects -->
+          <li>
+            <Button
+              to="/projects"
+              :class="{
+                'bg-black/20 dark:bg-white/20': $route.name === 'projects',
+              }"
+            >
+              <PhosphorIconCode class="scale-75 lg:scale-100" size="30" />
+              Projects
+            </Button>
+          </li>
+        </ul>
       </nav>
 
       <!-- Content -->
@@ -60,34 +83,49 @@ const enableCursorFx = ref(true);
 
       <!-- Actions & Socials -->
       <nav
-        class="col-span-5 lg:col-span-1 bg-black/20 dark:bg-white/20 dark:border-white backdrop-blur-2xl flex flex-col items-center gap-y-10 justify-around rounded-t-2xl lg:rounded-l-2xl lg:translate-x-3/4 border-black delay-300 border hover:translate-x-0 py-20 lg:h-screen transition-transform"
+        class="col-span-5 lg:col-span-1 bg-black/20 dark:bg-white/20 dark:border-white backdrop-blur-2xl flex flex-col items-center gap-y-10 justify-around rounded-t-2xl lg:rounded-tr-none lg:rounded-l-2xl lg:translate-x-3/4 border-black delay-300 border hover:translate-x-0 py-20 lg:h-screen transition-transform"
       >
         <div class="space-y-5 text-center">
           <h1 class="font-serif text-4xl">Actions</h1>
 
-          <div class="flex lg:flex-col items-center gap-4">
+          <div class="flex justify-center lg:flex-col items-center gap-4">
             <!-- Toggle theme -->
             <ClientOnly>
-              <button
-                class="p-3 rounded-full hover:bg-black/10 border-black dark:border-white border"
+              <Button
                 type="button"
+                v-tooltip.left="{
+                  content: 'Change site theme',
+                  disabled: areTooltipsDisabled,
+                }"
+                :for-icon="true"
                 @click="
                   $colorMode.preference =
                     $colorMode.value === 'dark' ? 'light' : 'dark'
                 "
               >
+                <span class="sr-only"
+                  >Toggle
+                  {{ $colorMode.value === "dark" ? "light" : "dark" }}
+                  mode</span
+                >
                 <component size="30" :is="themeIcon" />
-              </button>
+              </Button>
             </ClientOnly>
 
             <!-- Toggle cursor effects -->
-            <button
-              class="p-3 rounded-full hover:bg-black/10 border-black dark:border-white border"
+            <Button
+              class="hidden lg:block"
               type="button"
+              v-tooltip.left="{
+                content: 'Disable cursor effect',
+                disabled: areTooltipsDisabled,
+              }"
+              :for-icon="true"
               @click="enableCursorFx = !enableCursorFx"
             >
+              <span class="sr-only">Disable cursor effect</span>
               <PhosphorIconSparkle size="30" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -98,34 +136,62 @@ const enableCursorFx = ref(true);
 
           <div class="flex lg:flex-col items-center gap-4">
             <!-- GitHub profile -->
-            <NuxtLink
-              class="p-3 rounded-full hover:bg-black/10 border-black dark:border-white border"
+            <Button
               target="_blank"
               to="https://github.com/oyedejioyewole"
+              v-tooltip.left="{
+                content: 'My GitHub',
+                disabled: areTooltipsDisabled,
+              }"
+              :for-icon="true"
             >
+              <span class="sr-only">My GitHub</span>
               <PhosphorIconGithubLogo size="30" />
-            </NuxtLink>
+            </Button>
 
             <!-- Instagram -->
-            <NuxtLink
-              class="p-3 rounded-full hover:bg-black/10 border-black dark:border-white border"
+            <Button
               target="_blank"
               to="https://instagram.com/oyedeji.oyewole"
+              v-tooltip.left="{
+                content: 'My Instagram',
+                disabled: areTooltipsDisabled,
+              }"
+              :for-icon="true"
             >
+              <span class="sr-only">My Instagram</span>
               <PhosphorIconInstagramLogo size="30" />
-            </NuxtLink>
+            </Button>
 
             <!-- Send me a message -->
-            <NuxtLink
-              class="p-3 rounded-full hover:bg-black/10 border-black dark:border-white border"
+            <Button
               target="_blank"
               to="mailto://oyedejioyewolemaxwell@proton.me"
+              v-tooltip.left="{
+                content: 'Send me a message',
+                disabled: areTooltipsDisabled,
+              }"
+              :for-icon="true"
             >
+              <span class="sr-only">Send me a message</span>
               <PhosphorIconEnvelopeSimple size="30" />
-            </NuxtLink>
+            </Button>
           </div>
         </div>
       </nav>
     </main>
   </div>
 </template>
+
+<style lang="scss">
+.v-popper--theme-tooltip {
+  .v-popper__inner {
+    @apply bg-black/30 backdrop-blur-lg dark:bg-white/30 text-black dark:text-white border-black dark:border-white border;
+  }
+
+  .v-popper__arrow-inner,
+  .v-popper__arrow-outer {
+    @apply invisible;
+  }
+}
+</style>

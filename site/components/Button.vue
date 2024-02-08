@@ -5,15 +5,19 @@ const props = defineProps<{
   to?: string;
 }>();
 
-const component = computed(() => {
-  if (props.to) return resolveComponent("NuxtLink");
-  else return "button";
-});
+const component = computed(() =>
+  props.to ? resolveComponent("NuxtLink") : "button",
+);
 </script>
 
 <template>
   <component
-    class="px-5 py-3 lg:px-10 lg:py-5 lg:text-lg rounded-full backdrop-blur-xl border-black dark:border-white border flex items-center gap-x-1 lg:gap-x-2"
+    class="border-black dark:border-white border rounded-full"
+    :class="{
+      'p-3 hover:bg-black/10': forIcon,
+      'px-5 py-3 lg:px-10 lg:py-5 lg:text-lg backdrop-blur-xl flex items-center gap-x-1 lg:gap-x-2':
+        !forIcon,
+    }"
     :is="component"
     :target="props.target"
     :to="props.to"

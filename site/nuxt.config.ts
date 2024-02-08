@@ -23,7 +23,10 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
+    "floating-vue/nuxt",
     "nuxt-headlessui",
+    "nuxt-og-image",
     "nuxt-phosphor-icons",
   ],
+  site: "https://oyedejioyewole.vercel.app",
 });

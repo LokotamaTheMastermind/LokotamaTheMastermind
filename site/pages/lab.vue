@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+defineOgImageComponent("Page");
+
 onMounted(async () => {
   const locomotive = await import("locomotive-scroll");
   new locomotive.default();

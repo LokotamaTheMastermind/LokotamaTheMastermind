@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import projects from "~/assets/_database.json";
 
+defineOgImageComponent("Page", {
+  description: "Here are some of the sidequests I'm working on.",
+  title: "Projects · Oyedeji Oyewole",
+});
+
+useSeoMeta({
+  description: "Here are some of the sidequests I'm working on.",
+  ogDescription: "Here are some of the sidequests I'm working on.",
+  ogTitle: "Projects · Oyedeji Oyewole",
+  title: "Projects · Oyedeji Oyewole",
+});
+
 onMounted(async () => {
   const locomotive = await import("locomotive-scroll");
   new locomotive.default();
