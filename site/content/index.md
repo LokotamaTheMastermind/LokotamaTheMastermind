@@ -1,5 +1,5 @@
 ---
-title: "Home · Oyedeji Oyewole"
+title: Home
 ---
 
 # Hey, I'm Oyedeji

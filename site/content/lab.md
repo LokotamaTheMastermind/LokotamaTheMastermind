@@ -1,5 +1,5 @@
 ---
-title: Lab · Oyedeji Oyewole
+title: Lab
 ---
 
 # Lab

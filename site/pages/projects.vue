@@ -9,8 +9,8 @@ defineOgImageComponent("Page", {
 useSeoMeta({
   description: "Here are some of the sidequests I'm working on.",
   ogDescription: "Here are some of the sidequests I'm working on.",
-  ogTitle: "Projects · Oyedeji Oyewole",
-  title: "Projects · Oyedeji Oyewole",
+  ogTitle: "Projects",
+  title: "Projects",
 });
 
 onMounted(async () => {

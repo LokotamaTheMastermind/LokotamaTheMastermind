@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
+  titleTemplate: "%s · Oyedeji Oyewole",
+});
+</script>
+
 <template>
   <NuxtLayout>
     <NuxtPage />
