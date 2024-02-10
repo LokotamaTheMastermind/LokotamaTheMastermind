@@ -38,7 +38,7 @@ const copyToClipboard = async () => {
     <pre :class="$props.class"><slot /></pre>
 
     <button
-      class="hover:bg-black/20 p-2 border border-black w-fit rounded-2xl transition place-self-end"
+      class="hover:bg-black/20 p-2 border border-black dark:border-white dark:hover:bg-white/20 w-fit rounded-2xl transition place-self-end"
       @click="copyToClipboard"
     >
       <PhosphorIconCopy size="20" />
