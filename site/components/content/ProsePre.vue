@@ -41,6 +41,7 @@ const copyToClipboard = async () => {
       class="hover:bg-black/20 p-2 border border-black dark:border-white dark:hover:bg-white/20 w-fit rounded-2xl transition place-self-end"
       @click="copyToClipboard"
     >
+      <span class="sr-only">Copy code</span>
       <PhosphorIconCopy size="20" />
     </button>
   </div>
