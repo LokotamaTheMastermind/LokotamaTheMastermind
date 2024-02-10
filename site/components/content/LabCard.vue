@@ -35,7 +35,6 @@ const activeTab = ref<"code" | "preview">("code");
       <li>
         <button
           class="border border-black dark:border-white flex items-center gap-x-2 px-5 py-3 rounded-full"
-          v-show="hasPreview"
           :class="{
             'bg-black/20 dark:bg-white/20': activeTab === 'preview',
           }"
