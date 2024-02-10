@@ -31,8 +31,5 @@ export default defineNuxtConfig({
   notivue: {
     position: "bottom-center",
   },
-  routeRules: {
-    "/**": { isr: true },
-  },
   site: { url: "https://oyedejioyewole.vercel.app" },
 });
