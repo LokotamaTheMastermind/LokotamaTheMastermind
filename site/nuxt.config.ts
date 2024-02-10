@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       theme: {
-        dark: "rose-pine-dawn",
-        default: "vitesse-light",
+        dark: "github-dark",
+        default: "github-light",
       },
     },
   },
@@ -24,9 +24,15 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
     "floating-vue/nuxt",
-    "nuxt-headlessui",
+    "notivue/nuxt",
     "nuxt-og-image",
     "nuxt-phosphor-icons",
   ],
-  site: "https://oyedejioyewole.vercel.app",
+  notivue: {
+    position: "bottom-center",
+  },
+  routeRules: {
+    "/**": { isr: true },
+  },
+  site: { url: "https://oyedejioyewole.vercel.app" },
 });

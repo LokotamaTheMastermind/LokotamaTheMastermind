@@ -26,7 +26,12 @@ defineProps<{ isDraft: boolean; href?: string }>();
           size="20"
           v-if="!href"
         />
-        <PhosphorIconLinkSimple size="20" v-else />
+        <PhosphorIconGithubLogo
+          size="20"
+          v-else-if="href.includes('github.com')"
+        />
+        <PhosphorIconGlobeSimple size="20" v-else />
+
         {{ isDraft ? "In progress" : "Live" }}
       </component>
     </h3>

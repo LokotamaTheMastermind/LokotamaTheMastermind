@@ -90,9 +90,6 @@ importers:
       cli:
         specifier: workspace:^
         version: link:../cli
-      nuxt-headlessui:
-        specifier: ^1.1.5
-        version: 1.1.5(vue@3.4.16)
       nuxt-og-image:
         specifier: 3.0.0-rc.38
         version: 3.0.0-rc.38(@lezer/common@1.2.1)(@nuxt/devtools@1.0.8)(@vue/compiler-core@3.4.16)(nuxt@3.10.1)(postcss@8.4.35)(vite@5.1.0)(vue@3.4.16)(webpack@5.90.1)
@@ -1054,16 +1051,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.5.1
-    dev: true
-
-  /@headlessui/vue@1.7.19(vue@3.4.16):
-    resolution: {integrity: sha512-VFjKPybogux/5/QYGSq4zgG/x3RcxId15W8uguAJAjPBxelI23dwjOjTx/mIiMkM/Hd3rzFxcf2aIp56eEWRcA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      '@tanstack/vue-virtual': 3.0.4(vue@3.4.16)
-      vue: 3.4.16
     dev: true
 
   /@iconify-json/carbon@1.1.29:
@@ -2405,19 +2392,6 @@ packages:
   /@studio-freight/lenis@1.0.29:
     resolution: {integrity: sha512-z/qS8ato5m2wlxQREYj5iALcxMrhhm06vEiLqYzLI+3HmpPzPscmJ8cXNiay4bj692vOot2hyTA3WP++AQVoKA==}
     dev: false
-
-  /@tanstack/virtual-core@3.0.0:
-    resolution: {integrity: sha512-SYXOBTjJb05rXa2vl55TTwO40A6wKu0R5i1qQwhJYNDIqaIGF7D0HsLw+pJAyi2OvntlEIVusx3xtbbgSUi6zg==}
-    dev: true
-
-  /@tanstack/vue-virtual@3.0.4(vue@3.4.16):
-    resolution: {integrity: sha512-SDk3n+dMZnAXEAx+HZ0wQwBN00Ne7Qk4z29QnawJy6jzOOpoajt7Mm6gIEERin1D4ALxW5WpuDqhlnV2TNFQ+A==}
-    peerDependencies:
-      vue: ^2.7.0 || ^3.0.0
-    dependencies:
-      '@tanstack/virtual-core': 3.0.0
-      vue: 3.4.16
-    dev: true
 
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -6565,18 +6539,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
-
-  /nuxt-headlessui@1.1.5(vue@3.4.16):
-    resolution: {integrity: sha512-BtXnqlyqW0JX2wPDLvu+sG/Zvm3kLMJ2Vifz+1or7IqrCnpQMGcBYCKTLw6KrI1icuaoMdW0fBDcSLIJlKW71Q==}
-    dependencies:
-      '@headlessui/vue': 1.7.19(vue@3.4.16)
-      '@nuxt/kit': 3.10.1
-      pathe: 1.1.2
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - vue
-    dev: true
 
   /nuxt-icon@0.6.8(nuxt@3.10.1)(vite@5.1.0)(vue@3.4.16):
     resolution: {integrity: sha512-6eWlNOb6Uvp63uXFdhcmsB1JlubDv76Pot/VwmIu0yJxDYhwytbnv3WAjw2khl2l7W/65V4eMGIEeX9C5Ahxng==}
