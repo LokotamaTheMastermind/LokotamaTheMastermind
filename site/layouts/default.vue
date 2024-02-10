@@ -20,7 +20,11 @@ const areTooltipsDisabled = computed(() =>
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="#000000" />
+  <ClientOnly>
+    <NuxtLoadingIndicator
+      :color="$colorMode.value === 'light' ? '#000000' : '#ffffff'"
+    />
+  </ClientOnly>
 
   <div class="overflow-hidden relative">
     <CursorFx v-show="showCursorFx" />
