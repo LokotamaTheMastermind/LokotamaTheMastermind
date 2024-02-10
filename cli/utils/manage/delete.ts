@@ -26,8 +26,6 @@ export default async () => {
         .map((project) => JSON.parse(project) as Project)
     );
 
-  console.log(selectedProjects);
-
   // Loop through the selected projects and delete from array
   for (const project of selectedProjects) {
     const index = projects.findIndex(
